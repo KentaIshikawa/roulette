@@ -1,6 +1,6 @@
 $(function(){
   let abc = 'csv.php';
-$.getJSON(abc,csvReady);
+  $.getJSON(abc,csvReady);
 
 });/////////////////////////////////////////////////////////////////////////////
 
@@ -43,10 +43,6 @@ function csvReady(data){
 
   if(noArr.length){
     for(var i =0;i<noArr.length;i++){
-/*
-      let no = noArr[i].no - 1;
-      nameShuffleArr.splice(no,0,noArr[i].name);
-*/
       if(nameShuffleArr[noArr[i].no-1]){
         let a = nameShuffleArr[noArr[i].no-1];
         nameShuffleArr[noArr[i].no-1] = noArr[i].name;
@@ -57,9 +53,13 @@ function csvReady(data){
     }
   }
   nameShuffleArr = nameShuffleArr.filter(Boolean);
-  console.log(nameArr);
-  console.log(nameShuffleArr);
 
+  // console.log(nameArr);
+  // console.log(nameShuffleArr);
+
+
+
+  
   let rouletteHtml = "<ul>";
   for(var i = 0;i<nameArr.length;i++){
     rouletteHtml += "<li>";
