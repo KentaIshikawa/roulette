@@ -1,15 +1,64 @@
 $(function(){
-let nameArr=[
-  "Aさん",
-  "Bさん",
-  "Cさん",
-  "Dさん"
-]
+  let abc = 'csv.php';
+$.getJSON(abc,csvReady);
 
-  let nameShuffleArr=　nameArr.slice(0,nameArr.length);
+});/////////////////////////////////////////////////////////////////////////////
+
+function shuffleArr(arr){
+  var i = arr.length;
+  while(i){
+    var nRandam = Math.floor(Math.random() * i--);
+    var temp = arr[i];
+    arr[i] = arr[nRandam];
+    arr[nRandam] = temp;
+  };
+}
+
+function csvReady(data){
+  if(!data){
+    alert("エラーです");
+    return;
+  }
+  
+  let nameArr=[];
+  let nameShuffleArr=[];
+  let noArr=[];
+  for(let i = 0;i<data.length;i++){
+    if(data[i].through){
+      continue;
+    }
+    nameArr.push(data[i].name);
+    if(data[i].no){
+      let obj = {
+        'no' : data[i].no,
+        'name' : data[i].name
+      }
+      noArr.push(obj);
+      continue;
+    }
+    nameShuffleArr.push(data[i].name);
+  }
 
   shuffleArr(nameShuffleArr);
 
+  if(noArr.length){
+    for(var i =0;i<noArr.length;i++){
+/*
+      let no = noArr[i].no - 1;
+      nameShuffleArr.splice(no,0,noArr[i].name);
+*/
+      if(nameShuffleArr[noArr[i].no-1]){
+        let a = nameShuffleArr[noArr[i].no-1];
+        nameShuffleArr[noArr[i].no-1] = noArr[i].name;
+        nameShuffleArr.push(a);
+      }else{
+        nameShuffleArr[noArr[i].no-1] = noArr[i].name;
+      }
+    }
+  }
+  nameShuffleArr = nameShuffleArr.filter(Boolean);
+  console.log(nameArr);
+  console.log(nameShuffleArr);
 
   let rouletteHtml = "<ul>";
   for(var i = 0;i<nameArr.length;i++){
@@ -45,14 +94,8 @@ let nameArr=[
       $(this).text("スタート").removeClass("on");
     }
   });
-});/////////////////////////////////////////////////////////////////////////////
-
-function shuffleArr(arr){
-  var i = arr.length;
-  while(i){
-    var nRandam = Math.floor(Math.random() * i--);
-    var temp = arr[i];
-    arr[i] = arr[nRandam];
-    arr[nRandam] = temp;
-  };
 }
+
+function noArr(){
+
+};
