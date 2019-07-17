@@ -1,0 +1,44 @@
+@charset "utf-8";
+body,div,p,ul,li,button{
+  margin:0;
+  padding:0;
+}
+
+.roulette ul{
+  display: none;
+}
+
+.roulette ul li{
+  display: none;
+  font-size:130px;
+}
+
+.selectName{
+  font-size: 130px;
+}
+
+button{
+  width:300px;
+  height: 80px;
+  cursor: pointer;
+  font-size:30px;
+  outline:none;
+  border:none;
+  color:#fff;
+  background-color:#f96;
+}
+.on{
+  background-color:#9f9;
+}
+
+body{
+  display: table;
+  width:100%;
+  height: 100vh;
+}
+.wrap{
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+}
+
