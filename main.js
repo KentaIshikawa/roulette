@@ -1,15 +1,11 @@
-$(function(){
 $(function  ( ) {
   let abc = 'csv.php';
-  $.getJSON(abc,csvReady);
   $.getJSON(abc,  csvReady);
 
 });/////////////////////////////////////////////////////////////////////////////
 
-function shuffleArr(arr){
 function shuffleArr(arr)  {
   var i = arr.length;
-  while(i){
   while  (i ) {
     var nRandam = Math.floor(Math.random() * i--);
     var temp = arr[i];
@@ -18,19 +14,11 @@ function shuffleArr(arr)  {
   };
 }
 
-function csvReady(data){
-  if(!data){
 function csvReady(data)  {
   if  (!data ) {
     alert("エラーです");
     return;
   }
-  
-  let nameArr=[];
-  let nameShuffleArr=[];
-  let noArr=[];
-  for(let i = 0;i<data.length;i++){
-    if(data[i].through){
 
   let nameArr   = [];
   let nameShuffleArr   = [];
