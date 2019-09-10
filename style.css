@@ -42,3 +42,6 @@ body{
   text-align: center;
 }
 
+#reset{
+  display: none;
+}
